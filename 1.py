@@ -1,11 +1,8 @@
-# 0 0 0
-# 0 1 0
-# 1 0 0
-# 1 1 1
 import datetime
 
 import numpy as np
 from tensorflow import keras
+from tensorflow.keras import layers
 from tensorflow.keras.callbacks import TensorBoard
 import matplotlib.pyplot as plt
 
@@ -13,11 +10,12 @@ X = np.array([[0,0], [0,1], [1,0], [1,1]])
 y = np.array([0,0,0,1])
 
 model = keras.Sequential([
-    keras.layers.Dense(1, activation='sigmoid', input_shape=(2,))
+    layers.Dense(10, activation='relu', input_shape=(2,)),
+    layers.Dense(1,activation='sigmoid')
 ])
 
 model.compile(
-    optimizer=keras.optimizers.Adam(learning_rate=0.1),
+    optimizer=keras.optimizers.Adam(learning_rate=0.001),
     loss='binary_crossentropy',
     metrics=['accuracy']
 )
@@ -25,7 +23,7 @@ model.compile(
 log_dir = 'logs/' + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 tensorcloard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
 
-history = model.fit(X, y, epochs=100, verbose=1, callbacks=[tensorcloard_callback])
+history = model.fit(X, y, epochs=5000, verbose=1, callbacks=[tensorcloard_callback])
 
 predyction = model.predict(X)
 print("Predykcja:")
