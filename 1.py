@@ -2,9 +2,11 @@
 # 0 1 0
 # 1 0 0
 # 1 1 1
+import datetime
 
 import numpy as np
 from tensorflow import keras
+from tensorflow.keras.callbacks import TensorBoard
 import matplotlib.pyplot as plt
 
 X = np.array([[0,0], [0,1], [1,0], [1,1]])
@@ -20,7 +22,10 @@ model.compile(
     metrics=['accuracy']
 )
 
-history = model.fit(X, y, epochs=100, verbose=1)
+log_dir = 'logs/' + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+tensorcloard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
+
+history = model.fit(X, y, epochs=100, verbose=1, callbacks=[tensorcloard_callback])
 
 predyction = model.predict(X)
 print("Predykcja:")
