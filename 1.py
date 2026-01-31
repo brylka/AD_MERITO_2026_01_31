@@ -33,10 +33,16 @@ plt.figure(figsize=(10,5))
 
 plt.subplot(1,2,1)
 plt.plot(history.history['loss'])
+plt.title('Funkcja strat w czasie treningu')
+plt.xlabel('Epoki')
+plt.ylabel('loss')
 plt.grid(True)
 
 plt.subplot(1,2,2)
 plt.plot(history.history['accuracy'])
+plt.title('Dokładność w czasie treningu')
+plt.xlabel('Epoki')
+plt.ylabel('accuracy')
 plt.grid(True)
 
 plt.show()
