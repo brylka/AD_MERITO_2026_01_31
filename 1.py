@@ -14,7 +14,7 @@ model = keras.Sequential([
 ])
 
 model.compile(
-    optimizer='adam',
+    optimizer=keras.optimizers.Adam(learning_rate=0.1),
     loss='binary_crossentropy',
     metrics=['accuracy']
 )
