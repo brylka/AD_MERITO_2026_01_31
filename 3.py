@@ -28,3 +28,20 @@ model.compile(
     metrics=['accuracy']
 )
 
+
+model.summary()
+
+history = model.fit(
+    x_train, y_train,
+    epochs=10,
+    batch_size=32,
+    validation_split=0.1,
+    verbose=1
+)
+
+predictions = model.predict(x_test[:5])
+for i in range(5):
+    prediction = np.argmax(predictions[i])
+    actual = y_test[i]
+    pred = predictions[i][prediction]
+    print(f"Obraz {i}: przewidziano {prediction} (pewność: {pred}, prawdziwa: {actual}")
