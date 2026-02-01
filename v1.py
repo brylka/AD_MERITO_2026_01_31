@@ -8,7 +8,7 @@ VISION_KEY = os.getenv('AZURE_VISION_KEY')
 VISION_ENDPOINT = os.getenv('AZURE_VISION_ENDPOINT')
 
 # URL obrazka do analizy (możesz też użyć lokalnego pliku)
-image_url = "https://www.fototapety24.net/img/1000/109030602/obraz-na-plotnie-ogrod-japonski-sztuka-olej-drzewa.jpg"
+image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQIc45SyCcYJGm3KMXfaBD1spdLlZ1L4QL4Q&s"
 
 # Endpoint API
 analyze_url = f"{VISION_ENDPOINT}vision/v3.2/analyze"
