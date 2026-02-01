@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Analiza tekstu</title>
+</head>
+<body>
+    <h1>Analiza sentymentu</h1>
+
+    <textarea id="text" rows="5" cols="50" placeholder="Wpisz tekst do analizy..."></textarea>
+    <br><br>
+    <button onclick="analyze()">Analizuj</button>
+
+    <div id="result"></div>
+
+    <script>
+        function analyze() {
+            const text = document.getElementById('text').value;
+            const formData = new FormData();
+            formData.append('text', text);
+
+            fetch('/analyze', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = `
+                    <h3>Wynik:</h3>
+                    <p><b>Sentyment:</b> ${data.sentiment}</p>
+                    <p><b>Pozytywny:</b> ${data.positive}</p>
+                    <p><b>Negatywny:</b> ${data.negative}</p>
+                    <p><b>Neutralny:</b> ${data.neutral}</p>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
