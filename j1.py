@@ -44,6 +44,6 @@ for doc in result["results"]["documents"]:
     text = texts[int(doc["id"])]
     sentiment = doc["sentiment"]
     scores = doc["confidenceScores"]
-    print(f"Tekst: {text[:50]}...")
+    print(f"Tekst: {text}")
     print(f"Sentyment: {sentiment}")
     print(f"Pewność: pozytywny={scores['positive']:.0%}, negatywny={scores['negative']:.0%}, neutralny={scores['neutral']:.0%}\n")
