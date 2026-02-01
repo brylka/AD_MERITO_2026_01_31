@@ -20,7 +20,7 @@ def index():
 def analyze():
     text = request.form.get('text')
 
-    url = f"{LANGUAGE_ENDPOINT}language/:analyze-text?api-version=2023-04-01"
+    url = f"{LANGUAGE_ENDPOINT}language/:analyze-text?api-version=2025-11-01"
 
     body = {
         "kind": "SentimentAnalysis",
